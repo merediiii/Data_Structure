@@ -128,6 +128,14 @@ void Sift(int R[], int l, int h)
     R[l] = a;
 }
 
+void swap(int &a, int &b){
+    if(a == b)
+        return;
+    a ^= b;
+    b ^= a;
+    a ^= b;
+}
+
 void HeapSort(int R[], int n)
 {
     int i, a;
@@ -135,9 +143,7 @@ void HeapSort(int R[], int n)
         Sift(R, i, n - 1);
     for (i = n - 1; i > 0; i--)
     {
-        a = R[i];
-        R[i] = R[0];
-        R[0] = a;
+        swap(R[0],R[i]);
         Sift(R, 0, i - 1);
     }
 }
