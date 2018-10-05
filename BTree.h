@@ -249,7 +249,7 @@ void HeightPrint (BTree t) {
         q = que[front++];
         a++;
         if (a == 1)
-            cout << level << " ";
+            cout << "第" <<level << "层 ";
         cout << q->data << " ";
         if (q->lchild)
             que[rear++] = q->lchild;
@@ -258,7 +258,7 @@ void HeightPrint (BTree t) {
         if (l == front) {
             l = rear;
             level++;
-            cout << a << endl;
+            cout << "  " << a << "个节点" << endl;
             a = 0;
         }
     }
