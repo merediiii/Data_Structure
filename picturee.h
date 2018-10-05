@@ -4,21 +4,21 @@
 #ifndef DATA_STRUCTURE_PICTURE_H
 #define DATA_STRUCTURE_PICTURE_H
 #include <algorithm>
+#include "doing.h"
 using namespace std;
 #define INF 0x3f3f3f3f
-//顶点定义
+//邻接矩阵
 typedef struct  VertexType{
     int no;
     char info;
-}VertexType;
-//
+}VertexType;//顶点表
 typedef struct MGraph{
     int edge[maxSize][maxSize];
     int n,e;
     VertexType vex[maxSize];
 }MGraph;
 
-
+//领接表
 typedef struct ArcNode{
     int adjvex;
     struct ArcNode *next;
@@ -30,19 +30,10 @@ typedef struct VNode{
 }VNode;
 typedef struct AGraph{
     VNode list[maxSize];//邻接表
-    int n,e;
+    int n,e;//顶点数 & 边数
 }AGraph;
 
-const int V = 7;
-int cost[V][V]={INF,1,INF,INF,INF,INF,INF,
-                1,INF,2,3,INF,7,INF,
-                INF,2,INF,INF,10,INF,INF,
-                INF,3,INF,INF,INF,1,5,
-                INF,INF,10,INF,INF,5,INF,
-                INF,1,INF,1,INF,INF,8,
-                INF,INF,INF,5,INF,8,INF};
-int mincost[V];
-bool used[V];
+
 
 int prim(){
     for (int i = 0; i < V; ++i) {
