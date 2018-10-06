@@ -100,10 +100,12 @@ void Do(){
 //    int aq =3;
 //    swap(aq, aq);
 //    cout<< aq << " "<< aq;
-    Show(a, len(a));
-    HeapSort(a,len(a));
-    Show(a,len(a));
-;
+    BTree t;
+    grow(t, ch);
+    Post(t);
+    cout<<endl;
+    PostS(t);
+    PostSOneStack(t);
 
 }
 #endif //DATA_STRUCTURE_DOING_H
