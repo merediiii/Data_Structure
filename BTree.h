@@ -235,6 +235,29 @@ void PostS (BTree t) {
     cout << endl;
 }
 
+//只用一个栈的后续迭代遍历
+void PostSOneStack (BTree t) {
+    if (!t) return;
+    BTNode *s[maxSize],*p = t,*last = NULL;
+    int top = -1;
+    s[++top] = p;
+    while(top!=-1){
+        while(s[top]->lchild){
+            s[++top] = s[top]->lchild;
+        }
+        while(top!=-1){
+            if(last == s[top]->rchild || s[top]->rchild == NULL){
+                cout<<(last = s[top--])->data <<" ";
+            }
+            else if(s[top]->rchild != NULL) {
+                s[++top] = s[top]->rchild;
+                break;
+            }
+        }
+    }
+    cout<<endl;
+}
+
 int sum (BTree t) {
     if (!t)
         return 0;
@@ -249,7 +272,7 @@ void HeightPrint (BTree t) {
         q = que[front++];
         a++;
         if (a == 1)
-            cout << "第" <<level << "层 ";
+            cout << "第" << level << "层 ";
         cout << q->data << " ";
         if (q->lchild)
             que[rear++] = q->lchild;
